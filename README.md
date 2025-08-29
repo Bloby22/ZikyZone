@@ -2,7 +2,6 @@
 
 <p align="center">
   <strong>Discord bot pro správu komunity a ukázku vývoje</strong><br>
-  <em>Verze: v2 • Open Source: ❌ • Status: Portfolio</em>
 </p>
 
 <p align="center">
