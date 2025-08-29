@@ -59,4 +59,3 @@ Tento projekt je chráněn **proprietární licencí**. Zdrojový kód není ur�
 
 Jakékoli neoprávněné použití, kopírování nebo šíření tohoto softwaru může vést k právním krokům v souladu se zákony České republiky. Projekt **není open-source** a **není určen k veřejnému vývoji** ani spolupráci.
 
----
