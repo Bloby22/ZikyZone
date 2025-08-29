@@ -39,7 +39,46 @@ ZikyZone v2 je proprietární Discord bot navržený pro správu serveru, intera
 ---
 
 ## 👥 Autoři
-<table> <tr> <td align="center"> <img src="https://github.com/Bloby22.png" width="64" height="64" alt="Bloby22"/><br/> <strong>Bloby22</strong><br/> <a href="https://github.com/Bloby22">github.com/Bloby22</a><br/> <a href="https://github.com/Bloby22" title="GitHub"> <img src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white" alt="GitHub Badge"/> </a> <a href="https://discord.com/users/1411015759542358137" title="Discord"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord Badge"/> </a> <a href="mailto:blobycz@proton.me" title="Email"> <img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white" alt="Email Badge"/> </a> <a href="https://bloby.eu" title="Web"> <img src="https://img.shields.io/badge/Web-bloby.dev-blue?style=flat&logo=google-chrome&logoColor=white" alt="Web Badge"/> </a> </td> <td align="center"> <img src="https://github.com/BlobDeveloper.png" width="64" height="64" alt="BlobDeveloper"/><br/> <strong>BlobDeveloper</strong><br/> <a href="https://github.com/BlobDeveloper">github.com/BlobDeveloper</a><br/> <a href="https://github.com/BlobDeveloper" title="GitHub"> <img src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white" alt="GitHub Badge"/> </a> <a href="https://discord.com/users/820909092302356500" title="Discord"> <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord Badge"/> </a> <a href="mailto:blob.dev@protonmail.com" title="Email"> <img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white" alt="Email Badge"/> </a> <a href="https://blobdev.xyz" title="Web"> <img src="https://img.shields.io/badge/Web-blobdev.xyz-blue?style=flat&logo=google-chrome&logoColor=white" alt="Web Badge"/> </a> </td> </tr> </table>
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/Bloby22.png" width="64" height="64" alt="Bloby22"/><br/>
+      <strong>Bloby22</strong><br/>
+      <a href="https://github.com/Bloby22">github.com/Bloby22</a><br/><br/>
+      <!-- Řádek s ikonami -->
+      <a href="https://github.com/Bloby22" title="GitHub">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white" alt="GitHub Badge"/>
+      </a>
+      <a href="https://discord.com/users/1411015759542358137" title="Discord">
+        <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord Badge"/>
+      </a>
+      <a href="mailto:blobycz@proton.me" title="Email">
+        <img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white" alt="Email Badge"/>
+      </a>
+      <a href="https://bloby.eu" title="Web">
+        <img src="https://img.shields.io/badge/Web-bloby.eu-blue?style=flat&logo=google-chrome&logoColor=white" alt="Web Badge"/>
+      </a>
+    </td>
+    
+    <td align="center">
+      <img src="https://github.com/BlobDeveloper.png" width="64" height="64" alt="BlobDeveloper"/><br/>
+      <strong>BlobDeveloper</strong><br/>
+      <a href="https://github.com/BlobDeveloper">github.com/BlobDeveloper</a><br/><br/>
+      <a href="https://github.com/BlobDeveloper" title="GitHub">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white" alt="GitHub Badge"/>
+      </a>
+      <a href="https://discord.com/users/820909092302356500" title="Discord">
+        <img src="https://img.shields.io/badge/Discord-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord Badge"/>
+      </a>
+      <a href="mailto:blob.dev@protonmail.com" title="Email">
+        <img src="https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white" alt="Email Badge"/>
+      </a>
+      <a href="https://blobdev.xyz" title="Web">
+        <img src="https://img.shields.io/badge/Web-blobdev.xyz-blue?style=flat&logo=google-chrome&logoColor=white" alt="Web Badge"/>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
