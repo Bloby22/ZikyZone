@@ -1,21 +1,31 @@
-MIT License
+ZikyZone – Proprietární licence
 
-Copyright (c) 2025 BlobyCZ
+Copyright © 2025 BlobyCZ, Blob  
+Všechna práva vyhrazena.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Vlastnictví a charakter projektu  
+ZikyZone je proprietární software vytvořený autory BlobyCZ a Blob. Tento projekt není open-source (open source: false) a není určen k veřejnému používání, úpravám ani distribuci. 
+Repozitář slouží výhradně jako náhled do osobního portfolia autorů, za účelem prezentace technických dovedností a ukázky vývoje Discord robota.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+2. Omezení použití  
+Jakékoli stahování, kopírování, upravování, šíření nebo využívání softwaru ZikyZone bez výslovného písemného souhlasu autorů je přísně zakázáno. 
+Zdrojový kód, konfigurace, dokumentace a další soubory obsažené v tomto repozitáři nesmí být použity pro komerční, vzdělávací ani osobní účely.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+3. Právní ochrana  
+Tento software je chráněn zákony České republiky v oblasti autorského práva a duševního vlastnictví. 
+Jakékoli neoprávněné použití, včetně pokusů o replikaci, zveřejnění nebo zneužití, může vést k právním krokům, včetně občanskoprávního nebo trestního řízení. 
+Autoři si vyhrazují právo podniknout právní kroky proti jakémukoli porušení této licence.
+
+4. Zřeknutí se záruk  
+Software ZikyZone je poskytován „tak, jak je“, bez jakékoli výslovné nebo implicitní záruky.
+Autoři nenesou odpovědnost za jakékoli škody, ztráty nebo problémy vzniklé používáním tohoto softwaru, ať už přímo či nepřímo. Uživatelé berou na vědomí, že software může obsahovat chyby nebo být nekompletní.
+
+5. Neveřejný charakter  
+Repozitář ZikyZone není určen pro spolupráci, přispívání třetích stran ani komunitní vývoj. 
+Veškeré pull requesty, forky nebo pokusy o modifikaci budou ignorovány nebo odstraněny. 
+Projekt je prezentován výhradně jako statická ukázka bez nároku na další rozšiřování nebo podporu.
+
+6. Souhlas s podmínkami  
+Přístupem k tomuto repozitáři nebo jeho prohlížením vyjadřujete souhlas s výše uvedenými podmínkami.
+Pokud s těmito podmínkami nesouhlasíte, jste povinni tento repozitář okamžitě opustit a žádným způsobem jej dále nevyužívat.
+
