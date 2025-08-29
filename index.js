@@ -1,18 +1,25 @@
 require('dotenv').config();
+require('colors');
+
 const { Client, Collection, REST, Routes, GatewayIntentBits, Partials, EmbedBuilder } = require('discord.js');
-const { pripojeni, query, insert, select, update, delete: smazat, check } = require('./module/connect/connect');
 const fs = require('fs');
 const path = require('path');
+const mongoose = require('mongoose');
 
-const Economy = require('./manager/economy');
+
+const ekonomika = require('./manager/economy');
 const Ticket = require('./manager/ticket');
+const VIP = require('./manager/vip');
+const GiveawayManager = require('./manager/GiveawayManager.js');
+const config = require('./config.js');
 
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMembers,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMessageReactions
     ],
     partials: [
         Partials.Channel,
@@ -22,9 +29,12 @@ const client = new Client({
 });
 
 const ticket = new Ticket(client);
-const economy = new Economy();
+const economy = new ekonomika();
 
 client.commands = new Collection();
+client.config = config;
+
+client.giveawayManager = new GiveawayManager(client, client.config); 
 
 const ATEAM_ROLE_ID = process.env.ATEAM;
 const activeExcuses = new Map();
@@ -64,21 +74,27 @@ client.once('ready', async () => {
     console.log(`🚀 Bot je připojen jako ${client.user.tag}.`);
     
     try {
-        await pripojeni();
-        console.log('📡 Databáze připojena úspěšně!');
+        await mongoose.connect(process.env.MONGODB_URI || process.env.MONGODB);
+        console.log(`[DATABASE]`.green + ` MongoDB byla úspešne pripojená!`);
     } catch (err) {
-        console.error('❌ Nepodařilo se připojit k databázi:', err.message);
+        console.error(`[DATABASE_ERROR]`.red + ` Chyba pripojenia k MongoDB: ${err.message}`);
+        process.exit(1);
     }
     
     const guild = client.guilds.cache.get(process.env.GUILD);
     
     if (guild) {
+        let vip = new VIP(guild); 
+        
         try {
             await ticket.init(guild);
             console.log('🎫 Ticket systém inicializován!');
             
             await economy.init();
             console.log('💰 Economy systém inicializován!');
+            
+            await client.giveawayManager.init();
+            console.log('[GIVEAWAY_MANAGER]'.cyan + ' GiveawayManager byl inicializován!'.cyan);
             
         } catch (err) {
             console.error('❌ Chyba při inicializaci systémů:', err.message);
@@ -90,16 +106,14 @@ client.once('ready', async () => {
 
 client.on('interactionCreate', async interaction => {
     try {
-        // Zpracování ticket interakcí
         await ticket.handleInteraction(interaction);
         
-        // Zpracování slash příkazů
         if (interaction.isChatInputCommand()) {
             const command = client.commands.get(interaction.commandName);
             if (!command) return;
             
             try {
-                await command.execute(interaction, economy);
+                await command.execute(interaction, client); 
             } catch (error) {
                 console.error('❌ Chyba při vykonávání příkazu:', error);
                 
@@ -179,7 +193,7 @@ client.on('messageCreate', async (message) => {
                         { name: '📅 Období', value: dateRange, inline: false },
                         { name: '📝 Důvod', value: reason, inline: false }
                     )
-                    .setThumbnail(message.author.displayAvatarURL())
+                    .setThumbnail(message.author.displayAvatarURL()) // Oprava: message.author.id pro displayAvatarURL
                     .setTimestamp()
                     .setFooter({ text: `ID: ${message.author.id}` });
 
@@ -228,7 +242,12 @@ client.on('messageCreate', async (message) => {
         const hasAteamRole = member.roles.cache.has(ATEAM_ROLE_ID);
         
         if (!hasAteamRole) {
-            return message.reply('❌ Nemáte oprávnění k zobrazení omluvenek.');
+            const noPermissionEmbed = new EmbedBuilder()
+                .setColor('#ff0000')
+                .setTitle('❌ Nemáte oprávnění')
+                .setDescription('Tento příkaz mohou používat pouze členové A-team.')
+                .setTimestamp();
+            return message.reply({ embeds: [noPermissionEmbed] });
         }
 
         if (activeExcuses.size === 0) {
@@ -314,7 +333,7 @@ client.on('guildMemberAdd', (member) => {
             embeds: [vitejte(member)] 
         });
     } else {
-        console.log("Nebyl nalezen kanál #discord.");
+        console.log("Nebyl nalezen kanál #welcome (ID z .env: process.env.WELCOME).");
     }
 });
 
@@ -359,15 +378,18 @@ const odesel = (member) => {
                 inline: true
             },
             {
-                name: '⌛ Čas na serveru',
-                value: timeOnServer > 86400 ? 
-                    `**${Math.floor(timeOnServer / 86400)}** dní` : 
-                    `**${Math.floor(timeOnServer / 3600)}** hodin`,
-                inline: true
+            // Převod času na serveru na čitelnější formát (minuty, hodiny, dny)
+            name: '⌛ Čas na serveru',
+            value: timeOnServer >= 86400 // Dny
+                ? `**${Math.floor(timeOnServer / 86400)}** dní`
+                : (timeOnServer >= 3600 // Hodiny
+                    ? `**${Math.floor(timeOnServer / 3600)}** hodin`
+                    : `**${Math.floor(timeOnServer / 60)}** minut`), // Minuty
+            inline: true
             },
             {
                 name: '📊 Aktivita',
-                value: timeOnServer > 604800 ? '`🟢 Aktivní člen`' : '`🟡 Krátký pobyt`',
+                value: timeOnServer > 604800 ? '`🟢 Aktivní člen`' : '`🟡 Krátký pobyt`', // 1 týden v sekundách
                 inline: true
             }
         ]);
@@ -377,16 +399,16 @@ const odesel = (member) => {
 };
 
 client.on('guildMemberRemove', (member) => {
-    const ahojID = process.env.GOODBYE;
-    const ahoj = member.guild.channels.cache.get(ahojID);
+    const goodbyeId = process.env.GOODBYE;
+    const goodbyeChannel = member.guild.channels.cache.get(goodbyeId);
 
-    if (ahoj) {
-        ahoj.send({ 
+    if (goodbyeChannel) {
+        goodbyeChannel.send({ 
             content: `💔 **${member.user.displayName}** nás opustil...`,
             embeds: [odesel(member)] 
         });
     } else {
-        console.log("Kanál není pro #discord.")
+        console.log("Nebyl nalezen kanál pro #goodbye (ID z .env: process.env.GOODBYE).")
     }
 });
 
