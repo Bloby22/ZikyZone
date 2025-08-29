@@ -39,11 +39,7 @@ ZikyZone v2 je proprietární Discord bot navržený pro správu serveru, intera
 ---
 
 ## 👥 Autoři
-
-| 👤 Jméno | 🔗 GitHub |
-|----------|----------|
-| **Bloby22** | [github.com/Bloby22](https://github.com/Bloby22) |
-| **BlobDeveloper** | [github.com/BlobDeveloper](https://github.com/BlobDeveloper) |
+<table> <tr> <td align="center"> <img src="https://github.com/Bloby22.png" width="64" height="64" alt="Bloby22"/><br/> <strong>Bloby22</strong><br/> <a href="https://github.com/Bloby22">github.com/Bloby22</a> </td> <td align="center"> <img src="https://github.com/BlobDeveloper.png" width="64" height="64" alt="BlobDeveloper"/><br/> <strong>BlobDeveloper</strong><br/> <a href="https://github.com/BlobDeveloper">github.com/BlobDeveloper</a> </td> </tr> </table>
 
 ---
 
